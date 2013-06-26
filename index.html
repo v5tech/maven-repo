@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>一个建立在github上的简易maven repo </title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <a href="https://github.com/sxyx2008/maven-repo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <div class="wrapper">
+      <header>
+        <h1>maven-repo</h1>
+        <p>一个建立在github上的简易maven repo </p>
+
+		<ul>
+          <li><a href="https://github.com/sxyx2008/maven-repo">View On <strong>GitHub</strong></a></li>
+        </ul>
+
+      </header>
+      
+	  <section>
+        <h2><a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>使用方法</h2>
+1 在pom.xml中添加repository
+<pre><code>
+&lt;repositories&gt;
+	&lt;repository&gt;
+		&lt;id&gt;maven-repo-public-releases&lt;/id&gt;
+		&lt;url&gt;https://raw.github.com/sxyx2008/maven-repo/master/releases&lt;/url&gt;
+	&lt;/repository&gt;
+	&lt;repository&gt;
+		&lt;id>maven-repo-public-snapshots&lt;/id&gt;
+		&lt;url>https://raw.github.com/sxyx2008/maven-repo/master/snapshots&lt;/url&gt;
+	&lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre>
+2 在pom.xml添加distributionManagement
+<pre><code>
+&lt;distributionManagement&gt;
+    &lt;repository&gt;
+        &lt;id&gt;maven-repo-public-releases&lt;/id&gt;
+        &lt;url&gt;https://raw.github.com/sxyx2008/maven-repo/master/releases&lt;/url&gt;
+        &lt;/repository&gt;
+    &lt;snapshotRepository&gt;
+        &lt;id&gt;maven-repo-public-snapshots&lt;/id&gt;
+        &lt;url&gt;https://raw.github.com/sxyx2008/maven-repo/master/snapshots&lt;/url&gt;
+    &lt;/snapshotRepository&gt;
+    &lt;!-- 
+    &lt;repository&gt;
+        &lt;id&gt;nexus-releases&lt;/id&gt;
+        &lt;url&gt;http://localhost:8081/nexus/content/repositories/releases&lt;/url&gt;
+        &lt;name&gt;Nexus Releases Repository&lt;/name&gt;
+    &lt;/repository&gt;
+    &lt;snapshotRepository&gt;
+        &lt;id&gt;nexus-snapshots&lt;/id&gt;
+        &lt;url&gt;http://localhost:8081/nexus/content/repositories/snapshots&lt;/url&gt;
+        &lt;name&gt;Nexus Snapshots Repository&lt;/name&gt;
+    &lt;/snapshotRepository&gt;
+    --&gt;
+&lt;/distributionManagement&gt;
+</code></pre>
+<img src="https://github.com/sxyx2008/maven-repo/raw/master/snapshots/pom-usage.jpg">
+
+3 将maven工程发布到maven-repo/releases/仓库目录下
+<pre><code>
+执行mvn-Dmaven.test.skip=true -DaltDeploymentRepository=maven-repo-public-releases::default::file:E:/developer/maven-repo/releases/ clean deploy
+</code></pre>
+4 将maven工程发布到maven-repo/snapshots/仓库目录下
+<pre><code>
+执行mvn -Dmaven.test.skip=true -DaltDeploymentRepository=maven-repo-public-releases::default::file:E:/developer/maven-repo/snapshots/ clean deploy
+</code></pre>
+<img src='https://github.com/sxyx2008/maven-repo/raw/master/snapshots/mvn-deploy.jpg'/>
+5 提交
+<pre><code>
+$> git commit -m "MESSAGE"
+$> git push origin master
+</code></pre>
+
+注:
+<pre>
+* mvn-Dmaven.test.skip=true 为执行时跳过单元测试
+* -DaltDeploymentRepository=maven-repo-public-releases maven-repo-public-releases为pom中配置的repository的id
+* maven-repo-public-releases为github上maven-repo仓库releases目录的id
+* maven-repo-public-snapshots为github上maven-repo仓库snapshots目录的id
+</pre>
+
+<h2><a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>参考</h2>
+<a href='http://www.ikrady.com/2011/09/github上搭建maven仓库/'>http://www.ikrady.com/2011/09/github上搭建maven仓库/</a><br/>
+<a href='http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github'>http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github</a><br/>
+<a href='https://github.com/Ekito/maven-repo'>https://github.com/Ekito/maven-repo</a><br/>
+<a href='https://github.com/sxyx2008/hibernate-search-example/blob/master/pom.xml'>https://github.com/sxyx2008/hibernate-search-example/blob/master/pom.xml</a>
+	  </section>
+
+
+    <footer>
+      <p>Project maintained by <a href="https://github.com/sxyx2008">雪山飞鹄</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41498544-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
