@@ -68,6 +68,8 @@
 
 参考
 
+* [http://www.ikrady.com/2011/09/github上搭建maven仓库/](http://www.ikrady.com/2011/09/github%E4%B8%8A%E6%90%AD%E5%BB%BAmaven%E4%BB%93%E5%BA%93/)
+
 * [http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github](http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github)
 
 * [https://github.com/Ekito/maven-repo](https://github.com/Ekito/maven-repo)
