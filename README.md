@@ -75,3 +75,6 @@
 * [https://github.com/Ekito/maven-repo](https://github.com/Ekito/maven-repo)
 
 * [https://github.com/sxyx2008/hibernate-search-example/blob/master/pom.xml](https://github.com/sxyx2008/hibernate-search-example/blob/master/pom.xml)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sxyx2008/maven-repo/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
